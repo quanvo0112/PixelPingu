@@ -30,7 +30,7 @@ Bài này tập trung vào việc khai thác từ **2 file chính** và **2 mode
 
 ---
 
-💡 File này được tạo ra nhằm tổng hợp quá trình làm bài, cũng như chia sẻ lại kinh nghiệm và cách tiếp cận của nhóm **HCMUS-CTF 2025** cho những ai quan tâm đến thử thách này.
+💡 Repo này được tạo ra nhằm tổng hợp quá trình làm bài PixelPingu, cũng như chia sẻ lại kinh nghiệm và cách tiếp cận của nhóm **HCMUS-CTF 2025** cho những ai quan tâm đến thử thách này.
 
 👉 [Google Drive - Mã nguồn giải mã](https://drive.google.com/file/d/1HRUMaou3gSlXAgIX2WUUNLNnlzylTDIr/view?usp=sharing)
 
