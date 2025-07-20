@@ -1,4 +1,4 @@
-# PixelPingu
+# AI/PixelPingu
 
 # Tham gia cuộc thi **HCMUS-CTF 2025** cùng nhóm **YusatoCTF**
 
