@@ -10,7 +10,7 @@ Bài này tập trung vào việc khai thác từ **2 file chính** và **2 mode
 
 - `app.py`
 - `judge.py`
-- Model 1 (được import hoặc load từ source)
+- Model 1 (load từ source)
 - Model 2 (tương tự)
 
 ## 🧠 Prompt đề bài
