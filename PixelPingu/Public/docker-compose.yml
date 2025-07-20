@@ -1,0 +1,11 @@
+services:
+  pixelpingu:
+    build: .
+    ports:
+      - "25001:25001"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=25001
+      - FLAG=HCMUS-CTF{FAKEEEEEE_FLAGGGGG_FAKEEEEEE_FLAGGGGG}
+    restart: unless-stopped
