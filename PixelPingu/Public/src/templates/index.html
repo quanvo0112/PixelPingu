@@ -1,0 +1,93 @@
+{% extends "base.html" %} {% block title %}PixelPingu - Draw Your Penguin{%
+endblock %} {% block content %}
+<div class="row flex-lg-nowrap mb-5 align-items-stretch" style="flex: 1 1 0; min-height: 400px">
+    <div class="col-lg-8">
+        <div class="card h-100">
+            <div class="card-header">
+                <h2>Draw Your Penguin</h2>
+            </div>
+            <div class="card-body">
+                <div class="tools-container mb-3">
+                    <div class="p-2 rounded d-flex align-items-center flex-wrap gap-2" style="background: #fff">
+                        <b>Palette:</b>
+                        <div id="colorPalette" class="d-flex align-items-center gap-1">
+                            <div class="palette-swatch" data-color="#FF5733" title="Red-Orange"
+                                style="background:#ff5733;width:28px;height:28px;border-radius:6px;cursor:pointer;">
+                            </div>
+                            <div class="palette-swatch" data-color="#FFD700" title="Gold"
+                                style="background:#ffd700;width:28px;height:28px;border-radius:6px;cursor:pointer;">
+                            </div>
+                            <div class="palette-swatch" data-color="#4CAF50" title="Green"
+                                style="background:#4caf50;width:28px;height:28px;border-radius:6px;cursor:pointer;">
+                            </div>
+                            <div class="palette-swatch" data-color="#2196F3" title="Blue"
+                                style="background:#2196f3;width:28px;height:28px;border-radius:6px;cursor:pointer;">
+                            </div>
+                            <div class="palette-swatch" data-color="#FFFFFF" title="White"
+                                style="background:#fff;width:28px;height:28px;border-radius:6px;cursor:pointer;border:1px solid #ccc;">
+                            </div>
+                            <div class="palette-swatch" data-color="#000000" title="Black"
+                                style="background:#000;width:28px;height:28px;border-radius:6px;cursor:pointer;"></div>
+                        </div>
+                        <b class="ms-2">Custom:</b>
+                        <input type="color" id="colorPicker" value="#fb9a09"
+                            style="width:28px;height:28px;border-radius:6px;box-shadow: 0 1px 4px rgba(4, 4, 4, 0.08); border: 2px solid #ccc; padding: 0; margin: 0;" />
+                        <b class="ms-2">Brush:</b>
+                        <select id="brushSize" style="width:60px;">
+                            <option value="1">1x1</option>
+                            <option value="2">2x2</option>
+                            <option value="4">4x4</option>
+                        </select>
+                        <button id="clearCanvas" class="btn btn-warning btn-sm mx-1">Clear</button>
+                        <button id="fillCanvas" class="btn btn-info btn-sm mx-1">Fill</button>
+                        <button id="eraser" class="btn btn-dark btn-sm mx-1">Eraser</button>
+                    </div>
+                </div>
+
+                <div class="canvas-container text-center mb-4">
+                    <canvas id="artCanvas" width="512" height="512" class="border mb-4"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h3>Submit Your Artwork</h3>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-3">
+                    <canvas id="previewCanvas" width="128" height="128" class="border"></canvas>
+                </div>
+                <form id="submitForm">
+                    <button type="submit" class="btn btn-success btn-lg w-100">
+                        Submit
+                    </button>
+                </form>
+                <div id="submissionResult" class="mt-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='canvas.js') }}"></script>
+<script>
+    const palette = document.getElementById("colorPalette");
+    if (palette) {
+        palette.querySelectorAll(".palette-swatch").forEach((swatch) => {
+            swatch.addEventListener("click", function () {
+                const colorPicker = document.getElementById("colorPicker");
+                colorPicker.value = swatch.getAttribute("data-color");
+                colorPicker.dispatchEvent(new Event("change", { bubbles: true }));
+                palette
+                    .querySelectorAll(".palette-swatch")
+                    .forEach((s) => s.classList.remove("active"));
+                swatch.classList.add("active");
+            });
+        });
+    }
+    const style = document.createElement("style");
+    style.innerHTML = `.palette-swatch.active { box-shadow: 0 0 0 3px #333 inset !important; border-color: #333 !important; }`;
+    document.head.appendChild(style);
+</script>
+{% endblock %}
